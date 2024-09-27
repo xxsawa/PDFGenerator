@@ -1,0 +1,31 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" class="form-input">
+      <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+        <small class="error">Name is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" id="date" formControlName="date" class="form-input">
+      <div *ngIf="userForm.get('date')?.invalid && userForm.get('date')?.touched">
+        <small class="error">Date is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" class="form-input"></textarea>
+      <div *ngIf="userForm.get('description')?.invalid && userForm.get('description')?.touched">
+        <small class="error">Description is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+    <button type="submit" class="submit-button" [disabled]="userForm.invalid">Submit</button>
+    <p class="error" *ngIf="error">{{error}}</p>
+    <p *ngIf="response">{{response}}</p>
+</div>
+  </form>
